@@ -1,0 +1,31 @@
+<script>
+    $('#add').click(function () {
+        $('#create_Modal').modal()
+    })
+
+    $('#create_btn').click(function () {
+        var name1 = $('#create_name').val()
+        var address1 =$('#create_address').val()
+        var remark1 = $('#create_remark').val()
+        var data = {name:name1,address:address1,remark:remark1}
+        type = 'POST' // GET,POST,DELETE,PUT , ...
+        url = '/cmdb/idcs/'
+        $.ajax({
+            type: type,
+            url: url,
+            data: data, // 前端传给后端的数据
+            dataType: "json",
+            success: function(result){ // 后端返回的数据
+            //逻辑
+                console.log(result)
+                status = result.status
+                if (status == 1){
+                    location.reload()
+                }
+            },
+            error: function(){
+            //显示错误信息
+            },
+        })
+    })
+</script>

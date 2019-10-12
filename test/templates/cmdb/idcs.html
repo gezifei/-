@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "cmdb/modal.html" %}
+    {% include "cmdb/table_idc.html" %}
+    <button id="btn_create" type="button" class="btn btn-primary">创建</button>
+    {% include "cmdb/page.html" %}
+    {% include "cmdb/post_data.html" %}
+    {% include "cmdb/delete_data.html" %}
+    {% include "cmdb/modify_data.html" %}
+{% endblock %}

@@ -1,0 +1,22 @@
+<script>
+    $('.btn-delete').click(function () {
+        id = $(this).attr('btn_id')
+        url = '/cmdb/idcs/' + id
+        type = 'DELETE'
+        data = {}
+        $.ajax({
+            type: type,
+            url: url,
+            data: data, // 前端传给后端的数据
+            dataType: "json",
+            success: function(data){ // 后端返回的数据
+            //逻辑
+                console.log(data)
+                location.reload('/cmdb/get_idcs')
+            },
+            error: function(){
+            //显示错误信息
+            },
+        })
+    })
+</script>

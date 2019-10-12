@@ -1,0 +1,17 @@
+<div>
+    {% if paginator_data.has_previous %}
+        <a class='paginator' href='?page={{ paginator_data.previous_page_number }}&search={{search}}'><span>上一页</span></a>
+    {% endif %}
+
+    {% for page in paginator_data.paginator.page_range %}
+        {% if paginator_data.number == page %}
+            <span id="current_page">{{ page }}</span>
+        {% else %}
+            <a class='paginator' href='?page={{ page }}&search={{search}}' title='{{ page }}'><span>{{ page }}</span></a>
+        {% endif %}
+    {% endfor %}
+
+    {% if paginator_data.has_next %}
+        <a class='paginator' href='?page={{ paginator_data.next_page_number }}&search={{search}}'><span>下一页</span></a>
+    {% endif %}
+</div>

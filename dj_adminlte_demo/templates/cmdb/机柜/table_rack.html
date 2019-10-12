@@ -1,0 +1,25 @@
+<table class="table table-hover">
+<button button id="add" type="button" class="btn btn-primary">新增</button>
+    <tr>
+        <th>ID</th>
+        <th>机柜名</th>
+        <th>编号</th>
+        <th>U型</th>
+        <th>备注</th>
+        <th>操作</th>
+    </tr>
+
+    {% for rack in paginator_data.object_list %}
+        <tr>
+            <td>{{ rack.id }}</td>
+            <td>{{ rack.name }}</td>
+            <td>{{ rack.unmber }}</td>
+            <td>{{ rack.size }}</td>
+            <td>{{ rack.remark }}</td>
+            <td>
+                <button btn_id="{{ rack.id }}" class="btn-delete btn-danger"> 删除</button>
+                <button btn_id="{{ rack.id }}" class="btn-modify btn-info"> 修改</button>
+            </td>
+
+    {% endfor %}
+</table>

@@ -1,0 +1,42 @@
+<script>
+    $('.btn-modify').click(function () {
+
+        id = $(this).parents('tr').children('td').eq(0).text()
+        name_idc = $(this).parents('tr').children('td').eq(1).text()
+        address = $(this).parents('tr').children('td').eq(2).text()
+        remark = $(this).parents('tr').children('td').eq(3).text()
+        //console.log(id)
+        //以上是去获取到数据,一个个打印到终端，看能否获取到
+        $('#modify_id').attr('value',id)
+        $('#modify_name').attr('value',name_idc)
+        $('#modify_address').attr('value',address)
+        $('#modify_remark').attr('value',remark)
+        //以上代码是把上面获取到的数据放到模态框中对应的input框内（根据input的id名称来对应添加数据）
+        $('#modifyModal').modal()
+    })
+
+    //以下代码就是修改数据的代码
+    $('#modify_idc').click(function () {
+        id = $('#modify_id').val()
+        name1 = $('#modify_name').val()
+        address1 =$('#modify_address').val()
+        remark1 = $('#modify_remark').val()
+        type = 'PUT' // GET,POST,DELETE,PUT , ...
+        url = '/cmdb/idcs/' + id
+        data = {name:name1,address:address1,remark:remark1}
+        $.ajax({
+            type: type,
+            url: url,
+            data: data, // 前端传给后端的数据
+            dataType: "json",
+            success: function(data){ // 后端返回的数据
+            //逻辑
+                console.log(data)
+                location.reload('/cmdb/get_idcs')
+            },
+            error: function(){
+            //显示错误信息
+            },
+        })
+    })
+</script>
